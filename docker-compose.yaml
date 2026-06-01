@@ -1,11 +1,11 @@
 services:
   express-app:
-    image: ../express-app
+    build: ../express-app
     ports:
       - "8080:8080"
-    container_name: my-express-app
 
   watchtower:
     image: containrrr/watchtower
+    volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 my-express-app
+    command: --interval 30 express-app
